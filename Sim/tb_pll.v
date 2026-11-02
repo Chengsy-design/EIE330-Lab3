@@ -1,13 +1,3 @@
-// ============================================================================
-// EIE330 FPGA-based System Design - Lab 3-1
-// Testbench   : tb_pll
-// Purpose     : verify the divide-by-2 pixel clock generator
-// Run         : iverilog -g2012 -Wall -o tb_pll.vvp tb_pll.v ../RTL/pll.v
-//               vvp tb_pll.vvp
-// Expected    : sys_clk period 20 ns, vga_clk period 40 ns (25 MHz),
-//               vga_clk low while reset is asserted, first ten measured
-//               vga_clk periods all exactly 40 ns.
-// ============================================================================
 `timescale 1ns / 1ns
 
 module tb_pll;
@@ -29,21 +19,20 @@ module tb_pll;
         .vga_clk   (vga_clk)
     );
 
-    // 50 MHz board clock
+
     always #10 sys_clk = ~sys_clk;
 
-    // CSV of both clocks for the report figure
     initial fcsv = $fopen("pll_clocks.csv", "w");
     always @(sys_clk or vga_clk or sys_rst_n) begin
         if (fcsv != 0)
             $fwrite(fcsv, "%0t,%b,%b,%b\n", $time, sys_clk, vga_clk, sys_rst_n);
     end
 
-    // Count reset samples, then measure ten pixel-clock periods.
+
     always @(posedge vga_clk) begin
         if (!sys_rst_n) begin
             reset_samples = reset_samples + 1;
-            errors = errors + 1;                 // vga_clk must stay low in reset
+            errors = errors + 1;                 
         end else begin
             if (periods > 0) begin
                 if (($time - t_last_rise) !== 40) begin
@@ -75,10 +64,10 @@ module tb_pll;
         $display("=== Lab 3-1 pll divide-by-2 test ===");
         $display("sys_clk period = 20 ns (50 MHz)");
 
-        #15 sys_rst_n = 1'b0;          // assert reset before any active edge
-        #50 sys_rst_n = 1'b1;          // release at t = 65 ns
+        #15 sys_rst_n = 1'b0;         
+        #50 sys_rst_n = 1'b1;         
 
-        #500;                          // observe more than ten vga_clk periods
+        #500;                          
 
         $display("vga_clk periods measured: %0d", periods - 1);
         $display("vga_clk frequency        : 25 MHz (period 40 ns)");
