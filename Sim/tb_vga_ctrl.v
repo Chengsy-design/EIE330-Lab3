@@ -1,29 +1,10 @@
-// ============================================================================
-// EIE330 FPGA-based System Design - Lab 3-1
-// Testbench   : tb_vga_ctrl
-// Purpose     : verify the complete 640x480@60 timing of vga_ctrl
-// Run         : iverilog -g2012 -Wall -o tb_vga_ctrl.vvp tb_vga_ctrl.v ../RTL/vga_ctrl.v
-//               vvp tb_vga_ctrl.vvp
-//
-// Measured quantities
-//   hsync period      800 x 40 ns = 32 000 ns
-//   hsync pulse width  96 x 40 ns =  3 840 ns
-//   vsync period      525 x 32 us = 16 800 000 ns
-//   vsync pulse width    2 x 32 us =     64 000 ns
-//   active window     first (0,0), last (639,479), 307 200 pixels per frame
-//   request lead      pix_x = 1 and pix_y = 0 when rgb_valid first rises
-//
-// The simulation runs two full frames.  VCD recording is enabled only around
-// the line start, one character row and the frame end, because a naive dump of
-// 850 000 pixel clocks would be tens of megabytes.
-// ============================================================================
 `timescale 1ns / 1ns
 
 module tb_vga_ctrl;
 
     reg         vga_clk   = 1'b0;
-    reg         sys_rst_n = 1'b1;       // pulled low at t=5 ns, released at t=100 ns
-    reg  [15:0] pix_data  = 16'hA5A5;   // recognizable test color
+    reg         sys_rst_n = 1'b1;      
+    reg  [15:0] pix_data  = 16'hA5A5;  
 
     wire [9:0]  pix_x;
     wire [9:0]  pix_y;
@@ -31,7 +12,7 @@ module tb_vga_ctrl;
     wire        vsync;
     wire [15:0] rgb;
 
-    // Internal counters are probed for the coordinate checks.
+ 
     wire [9:0] cnt_h = dut.cnt_h;
     wire [9:0] cnt_v = dut.cnt_v;
     wire       rgb_valid   = dut.rgb_valid;
@@ -72,11 +53,8 @@ module tb_vga_ctrl;
         .rgb       (rgb)
     );
 
-    always #20 vga_clk = ~vga_clk;      // 25 MHz
+    always #20 vga_clk = ~vga_clk;     
 
-    // ------------------------------------------------------------------
-    // hsync period and pulse width
-    // ------------------------------------------------------------------
     always @(posedge hsync) begin
         if (sys_rst_n) begin
             if (h_edges > 0) begin
@@ -102,9 +80,7 @@ module tb_vga_ctrl;
         end
     end
 
-    // ------------------------------------------------------------------
-    // vsync period and pulse width
-    // ------------------------------------------------------------------
+
     always @(posedge vsync) begin
         if (sys_rst_n) begin
             if (v_edges > 0) begin
@@ -139,11 +115,9 @@ module tb_vga_ctrl;
         end
     end
 
-    // ------------------------------------------------------------------
-    // Active-window checks, sample by sample
-    // ------------------------------------------------------------------
+
     always @(posedge vga_clk) begin
-        #1;                            // let nonblocking updates settle
+        #1;                            
         if (sys_rst_n) begin
             if (rgb_valid) begin
                 active_pixels = active_pixels + 1;
@@ -184,9 +158,7 @@ module tb_vga_ctrl;
         end
     end
 
-    // ------------------------------------------------------------------
-    // Data for the report figures
-    // ------------------------------------------------------------------
+
     always @(posedge vga_clk) begin
         #1;
         if (sys_rst_n && !line_done && (cnt_v == 10'd243)) begin
@@ -206,9 +178,7 @@ module tb_vga_ctrl;
         end
     end
 
-    // ------------------------------------------------------------------
-    // Short VCD windows: line start, character row, frame end
-    // ------------------------------------------------------------------
+
     always @(posedge vga_clk) begin
         if (!dumping &&
             (((cnt_v == 10'd0)   && (cnt_h < 10'd200)) ||
@@ -237,10 +207,10 @@ module tb_vga_ctrl;
         $display("=== Lab 3-1 vga_ctrl timing test ===");
         $display("pixel clock 25 MHz (40 ns), 640x480@60, two full frames");
 
-        #5   sys_rst_n = 1'b0;         // create an active-low reset edge
-        #95  sys_rst_n = 1'b1;         // release at t = 100 ns
+        #5   sys_rst_n = 1'b0;         
+        #95  sys_rst_n = 1'b1;       
 
-        #33_900_000;                   // more than two complete frames
+        #33_900_000;                   
 
         $display("active pixels counted over the run: %0d", active_pixels);
         $display("outside-window samples checked  : %0d", outside_checks);
