@@ -1,14 +1,3 @@
-// ============================================================================
-// EIE330 FPGA-based System Design - Lab 3-1  Simple VGA Display
-// File        : pll.v
-// Contents    : divide-by-2 pixel-clock generator
-//
-// The board clock is 50 MHz.  A 640x480@60 frame needs one pixel clock every
-// 800 x 525 x 60 pixel periods, i.e. about 25.175 MHz.  The lecture uses
-// 25.000 MHz, obtained by toggling a register on every 50 MHz rising edge.
-// The module is named "pll" because it fills the role of a PLL in the lecture
-// example; it is a simple clock divider, not a PLL primitive.
-// ============================================================================
 `timescale 1ns / 1ns
 
 module pll (
