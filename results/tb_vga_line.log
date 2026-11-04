@@ -1,0 +1,3 @@
+VCD info: dumpfile results/tb_vga_line.vcd opened for output.
+tb_vga_line: 1600 pixel clocks dumped at line 40 (64 us)
+Sim/tb_vga_line.v:51: $finish called at 1344120 (1ns)

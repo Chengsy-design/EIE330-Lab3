@@ -1,0 +1,9 @@
+VCD info: dumpfile results/tb_vga_char_top.vcd opened for output.
+=== Lab 3 vga_char_top integration test ===
+Captured 307200 visible pixels into results/screen.hex
+PASS  one complete frame: 640 x 480 = 307200 pixels
+PASS  colour counts M=2560 U=2304 S=2496 T=1792 BG=298048
+PASS  top hsync: high=3840 ns, period=32000 ns
+PASS  top vsync: high=64000 ns, period=16800000 ns
+RESULT: PASS (top: one frame captured, counts and sync timing)
+Sim/tb_vga_char_top.v:188: $finish called at 67200090 (1ns)

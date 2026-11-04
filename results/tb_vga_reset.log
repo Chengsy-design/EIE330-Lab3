@@ -1,0 +1,10 @@
+VCD info: dumpfile results/tb_vga_reset.vcd opened for output.
+=== Lab 3 reset behavior test ===
+PASS  reset clears the counters, forces rgb=0 and hides the picture
+PASS  20 pixel clocks with reset asserted: rgb stayed 0000
+PASS  counters restart at the first clock after release
+PASS  first visible pixel after release is (0,0) background
+PASS  M reappears at (72,208) after release
+PASS  hsync period after reset is 32000 ns
+RESULT: PASS (reset: picture hidden, then restored)
+Sim/tb_vga_reset.v:163: $finish called at 11091490 (1ns)

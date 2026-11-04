@@ -1,0 +1,12 @@
+VCD info: dumpfile results/tb_vga_ctrl.vcd opened for output.
+=== Lab 3 vga_ctrl timing test ===
+PASS  hsync: high=3840 ns (96 clocks), period=32000 ns (800 clocks)
+PASS  first visible pixel: requested at cnt_h=143, shown at cnt_h=144, pix_x=0 pix_y=0
+PASS  last visible pixel: requested at cnt_h=782, shown at cnt_h=783, pix_x=639 pix_y=479
+PASS  pix_data_req leads rgb_valid by one clock at pix_x=0
+PASS  vsync: high=64000 ns (2 lines), period=16800000 ns (525 lines, 16.8 ms)
+PASS  mid-frame reset clears counters and rgb immediately
+PASS  reset holds cnt_h=0, cnt_v=0 and rgb=0 for 5 clocks
+PASS  picture restarts at pixel (0,0) after reset release
+RESULT: PASS (vga_ctrl: all timing and reset checks)
+Sim/tb_vga_ctrl.v:256: $finish called at 37926120 (1ns)

@@ -1,0 +1,3 @@
+VCD info: dumpfile results/tb_vga_pixel.vcd opened for output.
+tb_vga_pixel: 200 pixel clocks dumped at y=212, x=60..259
+Sim/tb_vga_pixel.v:51: $finish called at 7920230 (1ns)

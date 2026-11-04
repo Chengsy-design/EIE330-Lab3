@@ -1,0 +1,161 @@
+$date
+	Thu Oct 29 08:45:12 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module tb_pll $end
+$var wire 1 ! vga_clk $end
+$var reg 64 " high_time [63:0] $end
+$var reg 64 # period [63:0] $end
+$var reg 1 $ sys_clk $end
+$var reg 1 % sys_rst_n $end
+$var reg 64 & t_fall [63:0] $end
+$var reg 64 ' t_next [63:0] $end
+$var reg 64 ( t_rise [63:0] $end
+$var integer 32 ) errors [31:0] $end
+$scope module dut $end
+$var wire 1 $ sys_clk $end
+$var wire 1 % sys_rst_n $end
+$var reg 1 ! vga_clk $end
+$upscope $end
+$scope task check_period $end
+$var reg 64 * exp_high [63:0] $end
+$var reg 64 + exp_period [63:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx +
+bx *
+b0 )
+bx (
+bx '
+bx &
+1%
+0$
+bx #
+bx "
+x!
+$end
+#1
+0!
+0%
+#10
+1$
+#20
+0$
+#30
+1$
+#40
+0$
+#50
+1$
+#60
+0$
+#70
+1$
+#80
+0$
+#90
+1$
+#100
+0$
+b10100 *
+b101000 +
+1%
+#110
+b1101110 (
+1!
+1$
+#120
+0$
+#130
+b10000010 &
+0!
+1$
+#140
+0$
+#150
+b10100 "
+b101000 #
+b10010110 '
+1!
+1$
+#160
+0$
+#170
+0!
+1$
+#180
+0$
+#190
+b10111110 (
+1!
+1$
+#200
+0$
+#210
+b11010010 &
+0!
+1$
+#220
+0$
+#230
+b11100110 '
+1!
+1$
+#240
+0$
+#250
+0!
+1$
+#260
+0$
+#270
+b100001110 (
+1!
+1$
+#280
+0$
+#290
+b100100010 &
+0!
+1$
+#300
+0$
+#310
+b100110110 '
+1!
+1$
+#313
+0!
+0%
+#320
+0$
+#330
+1$
+#340
+0$
+#350
+1$
+#360
+0$
+#370
+1$
+#380
+0$
+#390
+1$
+#400
+0$
+#410
+1$
+#414

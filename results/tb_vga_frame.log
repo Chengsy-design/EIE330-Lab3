@@ -1,0 +1,3 @@
+VCD info: dumpfile results/tb_vga_frame.vcd opened for output.
+tb_vga_frame: two field scan cycles dumped (2 x 16.8 ms)
+Sim/tb_vga_frame.v:66: $finish called at 50404080 (1ns)

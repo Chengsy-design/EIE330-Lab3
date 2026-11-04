@@ -1,0 +1,10 @@
+VCD info: dumpfile results/tb_pll.vcd opened for output.
+=== Lab 3 pll (divide-by-2 pixel clock) test ===
+PASS  t=5 ns  asynchronous reset holds vga_clk=0
+PASS  t=65 ns  reset dominates the clock edges
+PASS  t=150 ns  period=40 ns, high=20 ns, low=20 ns
+PASS  t=230 ns  period=40 ns, high=20 ns, low=20 ns
+PASS  t=310 ns  period=40 ns, high=20 ns, low=20 ns
+PASS  t=314 ns  second asynchronous reset clears vga_clk
+RESULT: PASS (pll: 25 MHz, 50 % duty, asynchronous reset)
+Sim/tb_pll.v:101: $finish called at 414 (1ns)

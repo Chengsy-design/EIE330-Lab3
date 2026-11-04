@@ -1,0 +1,23 @@
+VCD info: dumpfile results/tb_vga_pic.vcd opened for output.
+=== Lab 3 vga_pic exhaustive pixel test ===
+PASS  reset: pix_data=0008 (background)
+PASS  exhaustive sweep: 307200 pixels checked, 0 errors
+PASS  glyph counts: M=2560 U=2304 S=2496 T=1792, background=298048
+PROBE (0,0) = 0008  (background)
+PROBE (71,208) = 0008  (background)
+PROBE (72,208) = ffff  (   M white)
+PROBE (100,240) = 0008  (background)
+PROBE (135,271) = ffff  (   M white)
+PROBE (136,240) = 0008  (background)
+PROBE (216,264) = 0008  (background)
+PROBE (224,264) = ffe0  (  U yellow)
+PROBE (360,208) = 0008  (background)
+PROBE (368,208) = 07ff  (    S cyan)
+PROBE (504,208) = 07e0  (   T green)
+PROBE (528,271) = 07e0  (   T green)
+PROBE (567,240) = 0008  (background)
+PROBE (568,240) = 0008  (background)
+PROBE (639,479) = 0008  (background)
+PROBE (1023,1023) = 0008  (background)
+RESULT: PASS (vga_pic: 307200/307200 pixels + 16 probes)
+Sim/tb_vga_pic.v:255: $finish called at 24577400 (1ns)

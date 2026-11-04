@@ -1,0 +1,7 @@
+pixels checked: 307200
+mismatches: 0
+M: 2560
+U: 2304
+S: 2496
+T: 1792
+BG: 298048
